@@ -1,0 +1,16 @@
+{
+  "add001": {
+    "url": "http://hn216.api.yesapi.cn/?&s=App.Config.AddConfig",
+    "app_key": "6A3D030D071263AEDC8F8E115C30CA3E",
+    "name": "testapg",
+    "value": "3",
+    "expect_result": "0",
+    "status_code": "200"},
+  "add002": {
+    "url": "http://hn216.api.yesapi.cn/?&s=App.Config.AddConfig",
+    "app_key": "6A3D030D071263AEDC8F8E115C30CA3E",
+    "name": "testaph",
+    "value": "3",
+    "expect_result": "0",
+    "status_code": "200"}
+}

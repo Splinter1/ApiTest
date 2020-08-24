@@ -10,14 +10,16 @@ from tools.read_json import ReadJson
 
 # 读取数据函数
 def get_data():
-    data = ReadJson("addCon.json").read_json()
+    datas = ReadJson("addCon_more.json").read_json()
     # 新建空列表，添加读取json数据
     arrs = []
-    arrs.append((data.get("url"),
-                 data.get("name"),
-                 data.get("value"),
-                 data.get("expect_result"),
-                 data.get("status_code")))
+    # 使用遍历
+    for data in datas.values():
+        arrs.append((data.get("url"),
+                     data.get("name"),
+                     data.get("value"),
+                     data.get("expect_result"),
+                     data.get("status_code")))
     return arrs
 
 
@@ -33,7 +35,7 @@ class TestaddCon(unittest.TestCase):
         s = ApiaddCon().api_post_add(url,name,value)
         print("查看打印接口",s.json())
         # 断言响应信息 及 状态码
-        self.assertEqual(expect_result, s.json()['msg'])
+        self.assertEqual(expect_result, s.json()['data']['err_code'])
         # 断言响应状态吗
         self.assertEqual(status_code, s.status_code)
 

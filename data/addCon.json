@@ -2,6 +2,6 @@
   "url": "http://hn216.api.yesapi.cn/?&s=App.Config.AddConfig",
   "name": "testap0",
   "value": "0",
-  "expect_result": "OK",
+  "expect_result": "0",
   "status_code": "200"
 }
