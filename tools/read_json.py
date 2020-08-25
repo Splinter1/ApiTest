@@ -24,11 +24,13 @@ class ReadJson():
     def read_json(self):
         with open(self.filepath, "r", encoding="utf-8") as f:
             # 调用load方法加载
+
             return json.load(f)
 
 
 if __name__ == '__main__':
     data = ReadJson("addCon.json").read_json()
+
     # 新建空列表，添加读取json数据
     arrs = []
     arrs.append((data.get("url"),

@@ -1,7 +1,1 @@
-{
-  "url": "http://hn216.api.yesapi.cn/?&s=App.Config.AddConfig",
-  "name": "testap0",
-  "value": "0",
-  "expect_result": "0",
-  "status_code": "200"
-}
+{"url": "http://hn216.api.yesapi.cn/?&s=App.Config.AddConfig", "name": "\u725b\u903c", "value": "123", "expect_result": "V3.1.0 YesApi App.Config.AddConfig", "status_code": 200}
