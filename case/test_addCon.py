@@ -10,7 +10,7 @@ from tools.read_json import ReadJson
 
 # 读取数据函数
 def get_data():
-    data = ReadJson("addCon.json").read_json()
+    data = ReadJson().read_json("addCon.json")
     # 新建空列表，添加读取json数据
     arrs = []
     arrs.append((data.get("url"),

@@ -10,7 +10,7 @@ from tools.read_json import ReadJson
 
 # 读取数据函数
 def get_data():
-    datas = ReadJson("addCon_more.json").read_json()
+    datas = ReadJson().read_json("addCon_more.json")
     # 新建空列表，添加读取json数据
     arrs = []
     # 使用遍历
@@ -35,7 +35,7 @@ class TestaddCon(unittest.TestCase):
         s = ApiaddCon().api_post_add(url,name,value)
         print("查看打印接口",s.json())
         # 断言响应信息 及 状态码
-        self.assertEqual(expect_result, s.json()['data']['err_code'])
+        self.assertEqual(expect_result, s.json()['msg'])
         # 断言响应状态吗
         self.assertEqual(status_code, s.status_code)
 

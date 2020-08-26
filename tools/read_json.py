@@ -1,5 +1,6 @@
 # 导包json
 import json
+import os
 
 
 # 打开json文件并获取文件流
@@ -18,18 +19,21 @@ import json
 
 class ReadJson():
 
-    def __init__(self, filename):
-        self.filepath = "../data/"+filename
+    # def __init__(self):
+    #     self.filepath = "../data/"+filename
 
-    def read_json(self):
-        with open(self.filepath, "r", encoding="utf-8") as f:
+    def read_json(self,filename):
+        path = os.path.dirname(os.path.dirname(__file__))
+        filepath = path + "/data/" + filename
+        # print(filepath)
+        with open(filepath, "r", encoding="utf-8") as f:
             # 调用load方法加载
 
             return json.load(f)
 
 
 if __name__ == '__main__':
-    data = ReadJson("addCon.json").read_json()
+    data = ReadJson().read_json("addCon.json")
 
     # 新建空列表，添加读取json数据
     arrs = []
