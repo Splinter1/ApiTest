@@ -28,7 +28,7 @@ class ReadJson():
 
 
 if __name__ == '__main__':
-    datas = ReadJson("addCon_more.json").read_json()
+    datas = ReadJson().read_json("addCon_more.json")
     # 新建空列表，添加读取json数据
     arrs = []
     # 使用遍历
