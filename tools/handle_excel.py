@@ -47,3 +47,4 @@ class HandExcel:
 if __name__ == '__main__':
     print(HandExcel().get_cell_value(2, 3))
     print(HandExcel().get_rows_value(2))
+    print(HandExcel().get_rows())
