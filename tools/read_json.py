@@ -1,6 +1,8 @@
 # 导包json
 import json
 import os
+import types
+from tools.handle_ini import HandleIni
 
 
 # 打开json文件并获取文件流
@@ -28,8 +30,30 @@ class ReadJson():
         # print(filepath)
         with open(filepath, "r", encoding="utf-8") as f:
             # 调用load方法加载
-
             return json.load(f)
+
+    def get_value(self, key, filename):
+        data = self.read_json(filename)
+        # 检验传入的url是否含有http字段，若含有则自动删减
+        if "http" in key:
+            base_url = HandleIni().read_ini("host")
+            key = key.replace(base_url,'')
+        else:
+            pass
+        return data[key]
+
+    def key_tovalue(self, dict1, key, default=None):
+        tmp = dict1
+        for k,v in tmp.items():
+            if k == key:
+                return v
+            else:
+                if isinstance(v, dict):
+                    ret = ReadJson.key_tovalue(self, dict1=v, key=key)
+                    if ret is not default:
+                        return ret
+        return default
+
 
 
 if __name__ == '__main__':
