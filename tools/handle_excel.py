@@ -43,6 +43,14 @@ class HandExcel:
             row_list.append(i.value)
         return row_list
 
+    def excel_write_data(self, row, cols, value):
+        # 写入数据
+        wb = self.load_excel()
+        wr = wb.active
+        wr.cell(row, cols, value)
+        wb.save(filepath + "excel.xlsx")
+
+
 
 if __name__ == '__main__':
     print(HandExcel().get_cell_value(2, 3))

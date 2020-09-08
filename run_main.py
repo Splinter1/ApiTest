@@ -29,14 +29,18 @@ class RunMain:
                 if excepect_method == 'message+errorcode':
                     config_msg = handle_result(url, code)
                     if msg == config_msg:
+                        HandExcel().excel_write_data(i+2, 9, "成功")
                         print("成功了")
                     else:
+                        HandExcel().excel_write_data(i+2, 10, json.dumps(res, ensure_ascii=False))
                         print("失败了")
                 if excepect_method == 'errorcode':
                     excepect_code = data[7]
                     if code == excepect_code:
+                        HandExcel().excel_write_data(i+2, 9, "成功")
                         print("成功了")
                     else:
+                        HandExcel().excel_write_data(i+2, 10, json.dumps(res, ensure_ascii=False))
                         print("失败了")
                 if excepect_method == 'json':
                     boo = handle_result_json(res, url, code)
