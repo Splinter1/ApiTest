@@ -2,7 +2,7 @@ import json
 import unittest
 from tools.handle_excel import HandExcel
 from api.api_base import BaseRequest
-from tools.handle_result import handle_result
+from tools.handle_result import handle_result,handle_result_json
 from tools.read_json import ReadJson
 
 
@@ -13,6 +13,7 @@ class RunMain:
         for i in range(rows):
             data = HandExcel().get_rows_value(i+2)
             is_run = data[0]
+            excepect_method = data[6]  # 预期结果获取方式
             if is_run == 'YES':
                 method = data[3]
                 url = data[2]
@@ -24,13 +25,25 @@ class RunMain:
                 print(res)
                 code = ReadJson().key_tovalue(res, "err_code")
                 msg = ReadJson().key_tovalue(res, "err_msg")
-                config_msg = handle_result(url, code)
-                if msg == config_msg:
-                    print("成功了")
-                else:
-                    print("失败了")
-            else:
-                pass
+                # 验证方式的区分
+                if excepect_method == 'message+errorcode':
+                    config_msg = handle_result(url, code)
+                    if msg == config_msg:
+                        print("成功了")
+                    else:
+                        print("失败了")
+                if excepect_method == 'errorcode':
+                    excepect_code = data[7]
+                    if code == excepect_code:
+                        print("成功了")
+                    else:
+                        print("失败了")
+                if excepect_method == 'json':
+                    boo = handle_result_json(res, url, code)
+                    if boo:
+                        print("成功了")
+                    else:
+                        print("失败了")
 
 
 if __name__ == '__main__':
