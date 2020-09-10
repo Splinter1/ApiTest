@@ -50,9 +50,30 @@ class HandExcel:
         wr.cell(row, cols, value)
         wb.save(filepath + "excel.xlsx")
 
+    def get_cols_value(self, col=None):
+        # 获取一列内容
+        cols_list = []
+        if col is None:
+            col = 'B'
+        cols_list_data = self.get_sheet_data()[col]
+        for i in cols_list_data:
+            cols_list.append(i.value)
+        return cols_list
+
+    def get_rows_num(self, case_id):
+        # 通过数据获取行号
+        num = 1
+        cols_data = self.get_cols_value()
+        for col_data in cols_data:
+            if case_id == col_data:
+                return num
+            num = num + 1
+
 
 
 if __name__ == '__main__':
-    print(HandExcel().get_cell_value(2, 3))
-    print(HandExcel().get_rows_value(2))
-    print(HandExcel().get_rows())
+    print(HandExcel().get_cell_value(2, 12))
+    # print(HandExcel().get_rows_value(2))
+    # print(HandExcel().get_rows())
+    # print(HandExcel().get_cols_value())
+    # print(HandExcel().get_rows_num("addDevice3"))

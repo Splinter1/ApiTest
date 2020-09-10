@@ -1,6 +1,6 @@
 import json
 from tools.read_json import ReadJson
-from deepdiff import  DeepDiff
+from deepdiff import DeepDiff
 
 
 def handle_result(url, code):
