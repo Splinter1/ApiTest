@@ -20,6 +20,8 @@ from tools.handle_ini import HandleIni
 # 使用参数替换 静态文件名
 
 class ReadJson():
+    path = os.path.dirname(os.path.dirname(__file__))
+    filepath = path + "/data/"
 
     # def __init__(self):
     #     self.filepath = "../data/"+filename
@@ -54,16 +56,25 @@ class ReadJson():
                         return ret
         return default
 
+    def write_value(self, data):
+        data_value = json.dumps(data ,ensure_ascii=False)
+        with open(self.filepath + "cookie.json", "w")as f:
+            f.write(data_value)
+
+
 
 
 if __name__ == '__main__':
-    data = ReadJson().read_json("addCon.json")
+    # data = ReadJson().read_json("addCon.json")
+    #
+    # # 新建空列表，添加读取json数据
+    # arrs = []
+    # arrs.append((data.get("url"),
+    #              data.get("name"),
+    #              data.get("value"),
+    #              data.get("expect_result"),
+    #              data.get("status_code")))
+    # print(arrs)
+    data = {'aaa' : 'bbbb'}
+    ReadJson().write_value(data)
 
-    # 新建空列表，添加读取json数据
-    arrs = []
-    arrs.append((data.get("url"),
-                 data.get("name"),
-                 data.get("value"),
-                 data.get("expect_result"),
-                 data.get("status_code")))
-    print(arrs)
