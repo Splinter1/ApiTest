@@ -69,11 +69,20 @@ class HandExcel:
                 return num
             num = num + 1
 
+    def get_excel_data(self):
+        # 获取excel中所有数据  每行为list
+        data_list = []
+        rows = self.get_rows()
+        for i in range(rows-1):
+            data_list.append(self.get_rows_value(i+2))
+        return data_list
+
 
 
 if __name__ == '__main__':
-    print(HandExcel().get_cell_value(2, 12))
+    # print(HandExcel().get_cell_value(2, 12))
     # print(HandExcel().get_rows_value(2))
     # print(HandExcel().get_rows())
     # print(HandExcel().get_cols_value())
     # print(HandExcel().get_rows_num("addDevice3"))
+    print(HandExcel().get_excel_data())
