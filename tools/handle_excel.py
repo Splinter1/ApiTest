@@ -77,6 +77,13 @@ class HandExcel:
             data_list.append(self.get_rows_value(i+2))
         return data_list
 
+    def get_cells_num(self, cell_name):
+        # 根据字段名获取列号
+        data_list = self.get_rows_value(1)
+        cell_num = data_list.index(cell_name)
+        return cell_num
+
+
 
 
 if __name__ == '__main__':
@@ -85,4 +92,5 @@ if __name__ == '__main__':
     # print(HandExcel().get_rows())
     # print(HandExcel().get_cols_value())
     # print(HandExcel().get_rows_num("addDevice3"))
-    print(HandExcel().get_excel_data())
+    # print(HandExcel().get_excel_data())
+    print(HandExcel().get_cells_num("是否执行"))

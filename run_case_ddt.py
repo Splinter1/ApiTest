@@ -22,7 +22,8 @@ class TestRunCaseDdt(unittest.TestCase):
             i = HandExcel().get_rows_num(data[1])
             body = data[5]
             body_json = json.loads(body)
-            is_run = data[0]
+            # 根据名称查询列号，然后拿到数据
+            is_run = data[HandExcel().get_cells_num("是否执行")]
             if is_run == 'YES':
                 is_depend = data[10]
                 # 前置处理
@@ -44,7 +45,6 @@ class TestRunCaseDdt(unittest.TestCase):
                 code = ReadJson().key_tovalue(res, "err_code")
                 msg = ReadJson().key_tovalue(res, "err_msg")
                 # 验证方式的区分
-
                 if excepect_method == 'message+errorcode':
                     config_msg = handle_result(url, code)
                     try:

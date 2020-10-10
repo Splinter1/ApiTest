@@ -15,7 +15,8 @@ class RunMain:
             data = HandExcel().get_rows_value(i+2)
             body = data[5]
             body_json = json.loads(body)
-            is_run = data[0]
+            # 根据名称查询列号，然后拿到数据
+            is_run = data[HandExcel().get_cells_num("是否执行")]
             if is_run == 'YES':
                 is_depend = data[10]
                 # 前置处理
